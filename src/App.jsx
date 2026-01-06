@@ -66,33 +66,42 @@ const Navbar = () => {
 
 const Hero = () => (
   <section className="section-padding" style={{ paddingTop: '10rem', paddingBottom: '6rem', backgroundColor: 'var(--white)', overflow: 'hidden' }}>
-    <div className="container" style={{ position: 'relative' }}>
-      <div style={{ maxWidth: '800px', textAlign: 'left', zIndex: 2, position: 'relative' }}>
-        <FadeInSection>
-          <div className="badge">Introducing AskQ Assistant</div>
-          <h1 style={{ fontSize: '4.5rem', marginBottom: '1.5rem', letterSpacing: '-0.05em', lineHeight: 1.1 }}>
-            RAG that <span className="text-primary">actually</span> ships.
-          </h1>
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.6, maxWidth: '600px' }}>
-            InsightQRAG is optimized for Fast, Simple, Cost-Efficient retrieval, so you can ship real features instead of maintaining retrieval plumbing.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Get Started for Free</button>
-            <button className="btn btn-outline" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>View Documentation</button>
-          </div>
-        </FadeInSection>
-      </div>
-      <div className="hero-image-container" style={{
-        position: 'absolute',
-        right: '-10%',
-        top: '-10%',
-        width: '50%',
-        zIndex: 1,
-        opacity: 0.9
-      }}>
-        <FadeInSection delay={300}>
-          <img src="/brain.png" alt="InsightQ Brain" style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-lg)' }} />
-        </FadeInSection>
+    <div className="container">
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '1.2fr 1fr',
+        gap: '4rem',
+        alignItems: 'center',
+        position: 'relative'
+      }} className="hero-grid">
+        <div style={{ textAlign: 'left', zIndex: 2 }}>
+          <FadeInSection>
+            <div className="badge">Introducing AskQ Assistant</div>
+            <h1 style={{ fontSize: '4.5rem', marginBottom: '1.5rem', letterSpacing: '-0.05em', lineHeight: 1.1 }}>
+              RAG that <span className="text-primary">actually</span> ships.
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: 'var(--text-muted)', marginBottom: '2.5rem', lineHeight: 1.6 }}>
+              InsightQRAG is optimized for Fast, Simple, Cost-Efficient retrieval, so you can ship real features instead of maintaining retrieval plumbing.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Get Started for Free</button>
+              <button className="btn btn-outline" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>View Documentation</button>
+            </div>
+          </FadeInSection>
+        </div>
+        <div style={{ zIndex: 1 }}>
+          <FadeInSection delay={300}>
+            <div style={{
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              boxShadow: 'var(--shadow-lg)',
+              border: '1px solid #e2e8f0',
+              backgroundColor: '#0f172a'
+            }}>
+              <img src="/brain.png" alt="InsightQ Brain" style={{ width: '100%', display: 'block' }} />
+            </div>
+          </FadeInSection>
+        </div>
       </div>
     </div>
   </section>
@@ -439,9 +448,16 @@ export default function App() {
         }
         
         @media (max-width: 992px) {
-          .hero-image-container {
-            display: none;
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 3rem !important;
+            text-align: center;
           }
+          .hero-grid > div { text-align: center; }
+          .hero-grid div[style*="text-align: left"] { text-align: center !important; }
+          .hero-grid .badge { margin-left: auto; margin-right: auto; }
+          .hero-grid div[style*="display: flex"] { justify-content: center; }
+          
           h1 { font-size: 3.5rem !important; }
         }
         
